@@ -15,6 +15,17 @@ class IComponent(Interface):
     """This marker interface defines a root of 1C Enterprise like
     components, e.g., Subsystems, Reference Books, Registers.
     """
+    name = zope.schema.TextLine(title=_N("Title"),
+                                 description=_N("Name of the component"),
+                                 required=True
+                                 )
+
+    component_type = zope.schema.Choice(title=_N("Type"),
+                                        description=_N("Defines whether component is subsystem "
+                                        "or register or reference book"),
+                                        vocabulary = ("subsystem","reference book","register")
+                                        required=True
+                                        )
 
 
 class IGroup(Interface):
@@ -31,6 +42,10 @@ class IGroup(Interface):
                                                   "have subgroups"),
                                    required=True
                                    )
+    variability = zope.schema.Bool(title=_N("Variability"),
+                                   description=_N("Whether amount of this group can "
+                                                  "be changed"),
+                                   required=True)
 
 
 class IRecord(Interface):
