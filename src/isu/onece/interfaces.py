@@ -135,6 +135,21 @@ class IFlowDocument(IDocument):
         required=True
         # readonly = true # ? FIXME: Determinate!
     )
+    
+    total = zope.schema.Float(
+        title=_("total"),
+        description=_(
+            "Determinates sum of the document"),
+        required=True
+    )
+    
+    counter = zope.schema.Object(
+        title=_("Conter"),
+        description=_("Determinates another party in the transaction"),
+        required=True
+    )
+    
+    
 
 
 class IRecordEvent(zope.interface.interfaces.IObjectEvent):
